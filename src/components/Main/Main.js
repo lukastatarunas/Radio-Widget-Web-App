@@ -27,6 +27,7 @@ const Main = ({ pickRadioStation }) => {
             {radioStations &&
                 radioStations.map((radioStation) => (
                     <div key={radioStation.id}>
+                        {radioStation.id === 1 ? <br /> : null}
                         <div
                             role="button"
                             tabIndex={0}
@@ -40,7 +41,9 @@ const Main = ({ pickRadioStation }) => {
                                 {radioStation.frequency}
                             </p>
                         </div>
-                        <hr className={styles.hr}></hr>
+                        {radioStation.id !== radioStations.length ? (
+                            <hr className={styles.hr}></hr>
+                        ) : null}
                     </div>
                 ))}
         </main>
