@@ -5,10 +5,14 @@ import PuffLoader from 'react-spinners/PuffLoader';
 
 import { getRadioStations } from '../../redux/actions/radioStations';
 
+import minus from '../../images/minus.png';
+import radio from '../../images/radio.png';
+import plus from '../../images/plus.png';
+
 import styles from './Main.module.scss';
 import { css } from '@emotion/core';
 
-const Main = ({ pickRadioStation }) => {
+const Main = ({ radioStation, pickRadioStation }) => {
     const dispatch = useDispatch();
 
     const radioStations = useSelector((state) => state.radioStations.radioStations);
@@ -25,23 +29,42 @@ const Main = ({ pickRadioStation }) => {
             {!radioStations && !loading && <p>No Radio Stations available!</p>}
             {error && !loading && <p>{error}</p>}
             {radioStations &&
-                radioStations.map((radioStation) => (
-                    <div key={radioStation.id}>
-                        {radioStation.id === 1 ? <br /> : null}
+                radioStations.map((station) => (
+                    <div key={station.id}>
+                        {station.id === radioStation ? (
+                            <div className={styles.radioStationsPopUp}>
+                                <img
+                                    className={styles.radioStationsIcon}
+                                    src={minus}
+                                    alt="minus-button-icon"
+                                />
+                                <img
+                                    className={styles.radioStationsImage}
+                                    src={radio}
+                                    alt="radio-station"
+                                    width="80px"
+                                    height="80px"
+                                />
+                                <img
+                                    className={styles.radioStationsIcon}
+                                    src={plus}
+                                    alt="plus-button-icon"
+                                />
+                            </div>
+                        ) : null}
+                        {station.id === 1 ? <br /> : null}
                         <div
                             role="button"
                             tabIndex={0}
-                            onClick={(event, id = radioStation.id) => pickRadioStation(event, id)}
-                            onKeyPress={(event, id = radioStation.id) =>
-                                pickRadioStation(event, id)
-                            }
+                            onClick={(event, id = station.id) => pickRadioStation(event, id)}
+                            onKeyPress={(event, id = station.id) => pickRadioStation(event, id)}
                             className={styles.radioStationsContainer}>
-                            <p className={styles.radioStation}>{radioStation.name}</p>
+                            <p className={styles.radioStation}>{station.name}</p>
                             <p id={styles.frequency} className={styles.radioStation}>
-                                {radioStation.frequency}
+                                {station.frequency}
                             </p>
                         </div>
-                        {radioStation.id !== radioStations.length ? (
+                        {station.id !== radioStations.length ? (
                             <hr className={styles.hr}></hr>
                         ) : null}
                     </div>
@@ -56,6 +79,7 @@ const override = css`
 `;
 
 Main.propTypes = {
+    radioStation: PropTypes.number,
     pickRadioStation: PropTypes.func
 };
 

@@ -1,6 +1,26 @@
 .main {
     background-color: #2F2F3A;
 
+    .radioStationsPopUp {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 30px;
+
+        .radioStationsIcon {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+        }
+
+        .radioStationsImage {
+            width: 100px;
+            height: 100px;
+            border: 3px solid #A0A9BB;
+            border-radius: 50%;
+        }
+    }
+
     .radioStationsContainer {
         display: flex;
         justify-content: space-between;

@@ -1,6 +1,10 @@
 .container {
-    width: 300px;
+    width: 400px;
     height: 800px;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 500px) {
+        width: 300px;
+    }
 }

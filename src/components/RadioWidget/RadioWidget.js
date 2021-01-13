@@ -14,7 +14,7 @@ const RadioWidget = () => {
     return (
         <div className={styles.container}>
             <Header />
-            <Main pickRadioStation={pickRadioStation} />
+            <Main radioStation={radioStation} pickRadioStation={pickRadioStation} />
             <Footer radioStation={radioStation} />
         </div>
     );

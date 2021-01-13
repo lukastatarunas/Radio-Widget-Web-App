@@ -1,5 +1,6 @@
 import backArrow from '../../images/back-arrow.png';
 import onOff from '../../images/switch.png';
+
 import styles from './Header.module.scss';
 
 const Header = () => {
