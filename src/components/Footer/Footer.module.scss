@@ -5,4 +5,23 @@
     border-bottom-right-radius: 35px;
     border-top: 1px solid grey;
     box-shadow: 0 8px 6px -6px black;
+    color: #fff;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 25px;
+
+        .footerText {
+            color: #EEAE61;
+            font-size: 80%;
+            font-weight: bold;
+        }
+
+        .radioStation {
+            color: #A0A9BB;
+            font-size: 150%;
+        }
+    }
 }

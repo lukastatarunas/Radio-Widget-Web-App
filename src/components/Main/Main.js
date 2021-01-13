@@ -1,13 +1,14 @@
-import styles from './Main.module.scss';
-
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types';
-import { getRadioStations } from '../../redux/actions/radioStations';
+import PropTypes from 'prop-types';
 import PuffLoader from 'react-spinners/PuffLoader';
+
+import { getRadioStations } from '../../redux/actions/radioStations';
+
+import styles from './Main.module.scss';
 import { css } from '@emotion/core';
 
-const Main = () => {
+const Main = ({ pickRadioStation }) => {
     const dispatch = useDispatch();
 
     const radioStations = useSelector((state) => state.radioStations.radioStations);
@@ -18,14 +19,10 @@ const Main = () => {
         dispatch(getRadioStations());
     }, []);
 
-    const handleClick = (event, id) => {
-        console.log(id);
-    };
-
     return (
         <main className={styles.main}>
             {loading && <PuffLoader css={override} />}
-            {!radioStations && !loading && <p>No radioStations available!</p>}
+            {!radioStations && !loading && <p>No Radio Stations available!</p>}
             {error && !loading && <p>{error}</p>}
             {radioStations &&
                 radioStations.map((radioStation) => (
@@ -33,11 +30,13 @@ const Main = () => {
                         <div
                             role="button"
                             tabIndex={0}
-                            onClick={(event, id = radioStation.id) => handleClick(event, id)}
-                            onKeyPress={handleClick}
+                            onClick={(event, id = radioStation.id) => pickRadioStation(event, id)}
+                            onKeyPress={(event, id = radioStation.id) =>
+                                pickRadioStation(event, id)
+                            }
                             className={styles.radioStationsContainer}>
-                            <p className={styles.paragraph}>{radioStation.name}</p>
-                            <p id={styles.frequency} className={styles.paragraph}>
+                            <p className={styles.radioStation}>{radioStation.name}</p>
+                            <p id={styles.frequency} className={styles.radioStation}>
                                 {radioStation.frequency}
                             </p>
                         </div>
@@ -53,8 +52,8 @@ const override = css`
     margin: 0 auto;
 `;
 
-// Main.propTypes = {
-//     radioStations: PropTypes.array
-// };
+Main.propTypes = {
+    pickRadioStation: PropTypes.func
+};
 
 export default Main;
