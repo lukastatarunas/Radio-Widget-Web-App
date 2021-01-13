@@ -1,33 +1,34 @@
 .main {
     background-color: #2F2F3A;
-}
 
-.radioStationsContainer {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 25px;
-    cursor: pointer;
-}
+    .radioStationsContainer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 25px;
+        cursor: pointer;
+        outline: none;
 
-// .radioStationsContainer:first-child {
-//     padding-top: 25px;
-// }
+        .paragraph {
+            color: #A0A9BB;
+            font-size: 150%;
+        }
 
-// .radioStationsContainer:last-child {
-//     padding-bottom: 25px;
-// }
+        #frequency {
+            font-weight: bold;
+        }
+    }
 
-.paragraph {
-    color: #A0A9BB;
-    font-size: 150%;
-}
+    // .radioStationsContainer:first-child {
+    //     padding-top: 25px;
+    // }
 
-#frequency {
-    font-weight: bold;
-}
+    // .radioStationsContainer:last-child {
+    //     padding-bottom: 25px;
+    // }
 
-.hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(128, 128, 128), rgba(0, 0, 0, 0));
+    .hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(128, 128, 128), rgba(0, 0, 0, 0));
+    }
 }
